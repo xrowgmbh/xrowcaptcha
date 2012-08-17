@@ -1,19 +1,42 @@
 var select,attval;
 var xrowCaptchaSuccess=false ;
+var ent=true;
+var con=true;
 
 jQuery(document).ready(function($) { 
        $(function(){
            $('#noScriptPrompt').hide();
            $('#nosubmit').css("visibility","visible");
        });
-       
+        var z= $("form").length;
         jQuery("form").each(function(index) 
         {
-            
-            if(jQuery.inArray(jQuery(this).attr('action'), excludeObjects) == -1)
+            if(jQuery(this).attr('action') !== undefined )
             {
-                if( !(jQuery('.xrow-captcha').length > 0))
+                var zeichenkette=jQuery(this).attr('action');
+            }else{var zeichenkette="";}
+            
+            var s=zeichenkette.indexOf("http");
+            
+            if(s>=0)
+            { 
+                ent=false;
+            }else{
+                ent=true;
+            }
+            
+            for(var i=0;i<excludeObjects.length;i++)
+            {
+                if(zeichenkette.indexOf(excludeObjects[i])>=0)
                 {
+                    con=false;
+                    break;
+                }else{con=true;}
+            }
+            if(con == true && ent == true && zeichenkette !== "")
+            { 
+                if( !(jQuery('.xrow-captcha').length > 0) || z>0)
+                { 
                     jQuery(this).delegate("input:submit", 'click', function(event) 
                     {
                         if( document.xrowCaptchaSuccess )
@@ -29,7 +52,7 @@ jQuery(document).ready(function($) {
                         }
                              return false;
                      });
-
+                    
                     jQuery(this).prepend('<div class="xrow-captcha"></div>');
                     
                     jQuery('.xrow-captcha').each(function()
@@ -50,6 +73,7 @@ jQuery(document).ready(function($) {
                                 }
                          });
                       });
+                     z--;
                     }else
                     {
                         jQuery(this).delegate("input:submit", 'click', function(event) 

@@ -16,7 +16,7 @@ class xrowCaptchaInputEvent
                 foreach ( $excludes as $exclude )
                 {
                     $path = $_SERVER['REQUEST_URI'];
-                    if ( in_array( $path,$exclude) == false) 
+                    if ( strstr( $path,$exclude) == false) 
                     { 
                         return true;
                     }
