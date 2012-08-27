@@ -10,7 +10,7 @@ class xrowCaptcha{
         }elseif ( eZUser::instance()->isLoggedIn() )
         {
             $threedays= time() - 3600 * 72;
-            if ( eZUser::instance()->lastVisit() < $threedays)
+            if ( eZUser::instance()->lastVisit() > $threedays)
             {
                 return true;
             }else{return false;}
