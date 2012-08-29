@@ -8,5 +8,4 @@ ExcludeURLs[]=/content/search
 ExcludeURLs[]=/content/edit
 ExcludeURLs[]=/setup/cachetoolbar
 ExcludeURLs[]=/setup/settingstoolbar
-
 */ ?>
