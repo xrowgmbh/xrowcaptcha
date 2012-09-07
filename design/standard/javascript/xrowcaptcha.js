@@ -52,11 +52,13 @@ jQuery(document).ready(function($) {
                         }
                              return false;
                      });
-                    
-                    jQuery(this).prepend('<div class="xrow-captcha"></div>');
-                    
-                    jQuery('.xrow-captcha').each(function()
+                    if(!(jQuery(this).children('.xrow-captcha').length>0))
                     {
+                        jQuery(this).prepend('<div class="xrow-captcha"></div>');
+                    }
+                    
+                       jQuery('.xrow-captcha').each(function()
+                       {
                         var element = jQuery(this);
                         jQuery.ez( 'xrowcaptcha::loadCaptcha', {}, function( data )
                         {
@@ -74,6 +76,7 @@ jQuery(document).ready(function($) {
                          });
                       });
                      z--;
+                    
                     }else
                     {
                         jQuery(this).delegate("input:submit", 'click', function(event) 
