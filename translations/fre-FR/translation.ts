@@ -2,32 +2,32 @@
 <TS><context>
     <name>design/xrowcaptcha</name>
     <message>
-      <source>Défi de sécurité</source>
+      <source>Security challenge</source>
       <translation>Défi de sécurité</translation>
       
     </message>
     <message>
-      <source>requis</source>
+      <source>required</source>
       <translation>requis</translation>
       
     </message>
     <message>
-      <source>Veuillez résoudre le défi suivant.</source>
+      <source>Please solve the following challenge.</source>
       <translation>Veuillez résoudre le défi suivant.</translation>
       
     </message>
     <message>
-      <source>Nouveau défi</source>
+      <source>New challenge</source>
       <translation>Nouveau défi</translation>
       
     </message>
     <message>
-      <source>Défi résolu avec succès.</source>
+      <source>Challenge successfully solved.</source>
       <translation>Défi résolu avec succès.</translation>
       
     </message>
     <message>
-      <source>Défiez non résolu.</source>
+      <source>Challenge not solved.</source>
       <translation>Défiez non résolu.</translation>
       
     </message>
