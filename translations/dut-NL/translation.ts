@@ -2,32 +2,32 @@
 <TS><context>
     <name>design/xrowcaptcha</name>
     <message>
-      <source>Beveiligingsprobleem</source>
+      <source>Security challenge</source>
       <translation>Beveiligingsprobleem</translation>
       
     </message>
     <message>
-      <source>vereist</source>
+      <source>required</source>
       <translation>vereist</translation>
       
     </message>
     <message>
-      <source>Los het volgende probleem op.</source>
+      <source>Please solve the following challenge.</source>
       <translation>Los het volgende probleem op.</translation>
       
     </message>
     <message>
-      <source>Nieuw probleem</source>
+      <source>New challenge</source>
       <translation>Nieuw probleem</translation>
       
     </message>
     <message>
-      <source>Probleem met succes opgelost.</source>
+      <source>Challenge successfully solved.</source>
       <translation>Probleem met succes opgelost.</translation>
       
     </message>
     <message>
-      <source>Probleem niet opgelost.</source>
+      <source>Challenge not solved.</source>
       <translation>Probleem niet opgelost.</translation>
       
     </message>
