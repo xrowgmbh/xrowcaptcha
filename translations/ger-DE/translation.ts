@@ -14,6 +14,10 @@
         <source>New challenge</source>
         <translation>andere Aufgabe</translation>
     </message>
+     <message>
+        <source>Get a new challenge.</source>
+        <translation>Eine andere Aufgabe bekommen.</translation>
+    </message>
     <message>
         <source>required</source>
         <translation>erforderlich</translation>

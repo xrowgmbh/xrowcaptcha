@@ -20,7 +20,7 @@
         <input type="hidden" name="xrowCaptchaHash" value="{$hash}" />
         <input type="text" id="solution" name="{$hash}" value="" />
 
-        <button type="button" id="code" data-hash="{$hash}" title="Get a new challenge." >{'New challenge'|i18n('design/xrowcaptcha')}</button>
+        <button type="button" id="code" data-hash="{$hash}" title="{'Get a new challenge.'|i18n('design/xrowcaptcha')}" >{'New challenge'|i18n('design/xrowcaptcha')}</button>
       
         <p class="log1" >{'Challenge successfully solved.'|i18n('design/xrowcaptcha')}</p>
         
