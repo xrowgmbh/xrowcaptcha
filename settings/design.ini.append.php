@@ -9,6 +9,7 @@ FrontendCSSFileList[]=xrowcaptcha.css
 [JavaScriptSettings]
 FrontendJavaScriptList[]=ezjsc::jquery
 FrontendJavaScriptList[]=ezjsc::jqueryio
+FrontendJavaScriptList[]=xrowcaptcha::includes
 FrontendJavaScriptList[]=xrowcaptcha::excludes
 FrontendJavaScriptList[]=xrowcaptcha.js
 

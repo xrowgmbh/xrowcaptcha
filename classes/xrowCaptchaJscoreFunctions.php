@@ -4,11 +4,28 @@ class xrowCaptchaJscoreFunctions extends ezjscServerFunctions
 {
     public static function excludes( $args )
     {
-        if( eZINI::instance( 'xrowcaptcha.ini' )->hasVariable( 'Settings', 'ExcludeURLs' ) )
+        $captcha_ini = eZINI::instance( 'xrowcaptcha.ini' );
+        if( $captcha_ini->hasVariable( 'Settings', 'ExcludeURLs' ) &&  $captcha_ini->variable( 'Settings', 'Type' ) == "exclude" )
         {
-            return "var excludeObjects =" . json_encode( eZINI::instance( 'xrowcaptcha.ini' )->variable( 'Settings', 'ExcludeURLs' ));
+            return "var excludeObjects =" . json_encode( $captcha_ini->variable( 'Settings', 'ExcludeURLs' ));
         }
-        
+        else
+        {
+            return "";
+        }
+    }
+    
+    public static function includes( $args )
+    {
+        $captcha_ini = eZINI::instance( 'xrowcaptcha.ini' );
+        if( $captcha_ini->hasVariable( 'Settings', 'IncludeURLs' ) &&  $captcha_ini->variable( 'Settings', 'Type' ) == "include" )
+        {
+            return "var includeObjects =" . json_encode( $captcha_ini->variable( 'Settings', 'IncludeURLs' ));
+        }
+        else
+        {
+            return "";
+        }
     }
     
    /* public static function checkIfShowCaptcha()

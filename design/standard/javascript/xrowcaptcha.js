@@ -25,14 +25,33 @@ jQuery(document).ready(function($) {
                 ent=true;
             }
             
-            for(var i=0;i<excludeObjects.length;i++)
-            {
-                if(zeichenkette.indexOf(excludeObjects[i])>=0)
+            if (typeof includeObjects !== 'undefined') {
+                for(var i=0;i<includeObjects.length;i++)
                 {
-                    con=false;
-                    break;
-                }else{con=true;}
+                    if(zeichenkette.indexOf(includeObjects[i])>0)
+                    {
+                        con=true;
+                    }
+                    else
+                    {
+                        con=false;
+                        break;
+                    }
+                }
             }
+            else
+            {
+                for(var i=0;i<excludeObjects.length;i++)
+                {
+                    if(zeichenkette.indexOf(excludeObjects[i])>=0)
+                    {
+                        con=false;
+                        break;
+                    }else{con=true;}
+                  
+                }
+            }
+            
             if(con == true && ent == true && zeichenkette !== "")
             { 
                 if( !(jQuery('.xrow-captcha').length > 0) || z>0)
