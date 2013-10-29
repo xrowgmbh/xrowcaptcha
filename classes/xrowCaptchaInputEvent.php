@@ -48,7 +48,7 @@ class xrowCaptchaInputEvent
             else
             {
                 //fix if no captcha needed at all
-                return true;
+                return "no captcha needed!";
             }
             
             if( isset( $_POST['xrowCaptchaHash'] ) )

@@ -1,7 +1,7 @@
 var select,attval;
-var xrowCaptchaSuccess=false ;
-var ent=true;
-var con=true;
+var xrowCaptchaSuccess = false;
+var ent = true;
+var con = false;
 
 jQuery(document).ready(function($) { 
        $(function(){
@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
                     }
                 }
             }
-            else
+            else if (typeof excludeObjects !== 'undefined') {
             {
                 for(var i=0;i<excludeObjects.length;i++)
                 {
