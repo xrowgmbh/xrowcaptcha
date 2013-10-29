@@ -18,7 +18,7 @@ class xrowCaptchaInputEvent
             $captcha_ini = eZINI::instance( 'xrowcaptcha.ini' );
             $path = $_SERVER['REQUEST_URI'];
             
-            if( $captcha_ini->hasVariable( 'Settings', 'ExcludeURLs' ) && $captcha_ini->variable( 'Settings', 'Type' ) == "exclude" )
+            if( $captcha_ini->hasVariable( 'Settings', 'ExcludeURLs' ) && count($captcha_ini->variable( 'Settings', 'ExcludeURLs' )) > 0 )
             {
                 $excludes = $captcha_ini->variable( 'Settings', 'ExcludeURLs' );
                 foreach ( $excludes as $exclude )
@@ -29,7 +29,7 @@ class xrowCaptchaInputEvent
                     }
                 }
             }
-            else if( $captcha_ini->hasVariable( 'Settings', 'IncludeURLs' ) && $captcha_ini->variable( 'Settings', 'Type' ) == "include" )
+            else if( $captcha_ini->hasVariable( 'Settings', 'IncludeURLs' ) && count($captcha_ini->variable( 'Settings', 'IncludeURLs' )) > 0 )
             {
                 $includes = $captcha_ini->variable( 'Settings', 'IncludeURLs' );
                 foreach ( $includes as $include )
@@ -44,6 +44,11 @@ class xrowCaptchaInputEvent
                         return true;
                     }
                 }
+            }
+            else
+            {
+                //fix if no captcha needed at all
+                return true;
             }
             
             if( isset( $_POST['xrowCaptchaHash'] ) )

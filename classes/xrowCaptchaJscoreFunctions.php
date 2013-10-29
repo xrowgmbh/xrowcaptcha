@@ -5,7 +5,7 @@ class xrowCaptchaJscoreFunctions extends ezjscServerFunctions
     public static function excludes( $args )
     {
         $captcha_ini = eZINI::instance( 'xrowcaptcha.ini' );
-        if( $captcha_ini->hasVariable( 'Settings', 'ExcludeURLs' ) &&  $captcha_ini->variable( 'Settings', 'Type' ) == "exclude" )
+        if( $captcha_ini->hasVariable( 'Settings', 'ExcludeURLs' ) &&  count( $captcha_ini->variable( 'Settings', 'ExcludeURLs' )) > 0 )
         {
             return "var excludeObjects =" . json_encode( $captcha_ini->variable( 'Settings', 'ExcludeURLs' ));
         }
@@ -18,7 +18,7 @@ class xrowCaptchaJscoreFunctions extends ezjscServerFunctions
     public static function includes( $args )
     {
         $captcha_ini = eZINI::instance( 'xrowcaptcha.ini' );
-        if( $captcha_ini->hasVariable( 'Settings', 'IncludeURLs' ) &&  $captcha_ini->variable( 'Settings', 'Type' ) == "include" )
+        if( $captcha_ini->hasVariable( 'Settings', 'IncludeURLs' ) &&  count( $captcha_ini->variable( 'Settings', 'IncludeURLs' )) > 0 )
         {
             return "var includeObjects =" . json_encode( $captcha_ini->variable( 'Settings', 'IncludeURLs' ));
         }
