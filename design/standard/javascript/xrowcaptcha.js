@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
                     }
                 }
             }
-            else if (typeof excludeObjects !== 'undefined') {
+            else if (typeof excludeObjects !== 'undefined')
             {
                 for(var i=0;i<excludeObjects.length;i++)
                 {
