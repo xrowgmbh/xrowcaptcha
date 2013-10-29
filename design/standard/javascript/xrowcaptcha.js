@@ -1,54 +1,59 @@
 var select,attval;
 var xrowCaptchaSuccess = false;
-var ent = true;
 var con = false;
 
-jQuery(document).ready(function($) { 
-       $(function(){
-           $('#noScriptPrompt').hide();
-           $('#nosubmit').css("visibility","visible");
-       });
-        var z= $("form").length;
+jQuery(document).ready(function($)
+    {
+        $(function(){
+            $('#noScriptPrompt').hide();
+            $('#nosubmit').css("visibility","visible");
+        });
+        
+        var z = $("form").length;
+        
         jQuery("form").each(function(index) 
         {
+            var ent = true;
             if(jQuery(this).attr('action') !== undefined )
             {
                 var zeichenkette=jQuery(this).attr('action');
-            }else{var zeichenkette="";}
-            
-            var s=zeichenkette.indexOf("http");
-            
-            if(s>=0)
-            { 
-                ent=false;
-            }else{
-                ent=true;
-            }
-            
-            if (typeof includeObjects !== 'undefined') {
-                for(var i=0;i<includeObjects.length;i++)
-                {
-                    if(zeichenkette.indexOf(includeObjects[i])>0)
-                    {
-                        con=true;
-                    }
-                    else
-                    {
-                        con=false;
-                        break;
-                    }
+                if(zeichenkette.indexOf("http") >=0 )
+                { 
+                    ent = false;
                 }
             }
-            else if (typeof excludeObjects !== 'undefined')
+            else
             {
-                for(var i=0;i<excludeObjects.length;i++)
-                {
-                    if(zeichenkette.indexOf(excludeObjects[i])>=0)
+                var zeichenkette="";
+            }
+            
+            if(ent === true)
+            {
+                if (typeof includeObjects !== 'undefined') {
+                    for(var i=0;i<includeObjects.length;i++)
                     {
-                        con=false;
-                        break;
-                    }else{con=true;}
-                  
+                        if(zeichenkette.indexOf(includeObjects[i])>0)
+                        {
+                            con=true;
+                            break;
+                        }
+                        else
+                        {
+                            con=false;
+                        }
+                    }
+                }
+                else if (typeof excludeObjects !== 'undefined')
+                {
+                    for(var i=0;i<excludeObjects.length;i++)
+                    {
+                        if(zeichenkette.indexOf(excludeObjects[i])>=0)
+                        {
+                            con=false;
+                            break;
+                        }else{con=true;}
+                      
+                    }
                 }
             }
             
