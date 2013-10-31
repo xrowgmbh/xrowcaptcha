@@ -57,7 +57,7 @@ jQuery(document).ready(function($)
                 }
             }
             
-            if(con == true && ent == true && zeichenkette !== "")
+            if(con == true && ent == true && zeichenkette !== "" || jQuery(this).find(".xrow-captcha").length > 0 )
             { 
                 if( !(jQuery('.xrow-captcha').length > 0) || z>0)
                 { 
