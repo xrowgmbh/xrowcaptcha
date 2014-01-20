@@ -27,27 +27,17 @@ class xrowCaptchaJscoreFunctions extends ezjscServerFunctions
             return "";
         }
     }
-    
-   /* public static function checkIfShowCaptcha()
-    { 
-        $xrowcaptcha = eZINI::instance( 'xrowcaptcha.ini' );
-        $excludeObjects = array();
-        if( $xrowcaptcha->hasVariable( 'Settings', 'ExcludeURLs' ) )
-        {
-            $excludeObjects = $xrowcaptcha->variable( 'Settings', 'ExcludeURLs' );
-        }
-        return array( 'excludeObjects' => $excludeObjects );
-    }*/
 
     public static function loadCaptcha()
     {
         if ( xrowCaptcha::isTrusted() )
-        {   
-            return '';
-        }else
         {
-            $capt_text=xrowCaptcha::generateCaptcha();
-            $hash=md5( rand () );
+            return '';
+        }
+        else
+        {
+            $capt_text = xrowCaptcha::generateCaptcha();
+            $hash = md5( rand () );
             $result = new xrowCaptchaResult();
             $result->hash = $hash;
             $result->result = $capt_text['exercise']['result'];
@@ -61,33 +51,34 @@ class xrowCaptchaJscoreFunctions extends ezjscServerFunctions
         }
     }
 
-    public static function compareResult($inputresult,$hash_cap)
+    public static function compareResult( $inputresult, $hash_cap )
     {
-        if($inputresult==null)
+        $http = eZHTTPTool::instance();
+        if( $inputresult == null )
         {
-            $inputresult= $_POST['inputresult'];
+            if( $http->hasPostVariable( 'inputresult' ) )
+                $inputresult = $http->postVariable( 'inputresult' );
         }
-        if($hash_cap==null)
+        if( $hash_cap == null)
         {
-            $hash_cap = $_POST['hash_cap'];
+            if( $http->hasPostVariable( 'hash_cap' ) )
+                $hash_cap = $http->postVariable( 'hash_cap' );
         }
-        
+
         $result = eZPersistentObject::fetchObject( xrowCaptchaResult::definition(), null, array( 'hash' => $hash_cap ) );
-        
         $dbresult=$result->attribute('result');
         if ($dbresult == $inputresult)
-        { 
-            $http = eZHTTPTool::instance();
+        {
             $http->setSessionVariable('xrowCaptchaSolved', '1');
             return true;
-        }else 
+        }
+        else 
         {
-            $http = eZHTTPTool::instance();
             $http->setSessionVariable('xrowCaptchaSolved', '0');
             return false;
         }
     }
-    
+
     public static function reloadChallange()
     {
         $var = xrowCaptcha::generateCaptcha();
