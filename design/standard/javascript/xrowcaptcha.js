@@ -6,14 +6,12 @@ jQuery(document).ready(function($) {
         $('#nosubmit').css("visibility","visible");
     });
     var formLength = $("form").length;
-
     $("form").each(function(index) {
-        var ent = true;
         var actionURL = '';
         var showCaptcha = true;
         var formElement = $(this);
-        if(formElement.attr('action') !== undefined) {
-            var actionURL = $(this).attr('action');
+        if(typeof formElement.attr('action') !== 'undefined') {
+            var actionURL = formElement.attr('action');
             if(actionURL.indexOf('http') >= 0) {
                 if(actionURL.indexOf(window.location.hostname) < 0)
                     showCaptcha = false;
@@ -42,9 +40,9 @@ jQuery(document).ready(function($) {
             }
         }
 
-        if((showCaptcha == true && actionURL !== '' ) || $(this).find(".xrow-captcha").length > 0 ) { 
-            if( !($('.xrow-captcha', formElement).length > 0) || formLength > 0) { 
-                $(this).delegate("input:submit", 'click', function(event)  {
+        if((showCaptcha == true && actionURL !== '' ) || $('.xrow-captcha', formElement).length > 0 ) { 
+            if(!($('.xrow-captcha', formElement).length > 0) || formLength > 0) { 
+                formElement.delegate("input:submit", 'click', function(event)  {
                     if( document.xrowCaptchaSuccess ) {
                         $('.log2').hide();
                         $('.log1').show();
@@ -57,8 +55,8 @@ jQuery(document).ready(function($) {
                     }
                     return false;
                 });
-                if(!($(this).children('.xrow-captcha').length>0)) {
-                    $(this).prepend('<div class="xrow-captcha"></div>');
+                if(!(formElement.children('.xrow-captcha').length > 0)) {
+                    formElement.prepend('<div class="xrow-captcha"></div>');
                 }
                 $('.xrow-captcha', formElement).each(function() {
                     var element = $(this);
@@ -81,7 +79,7 @@ jQuery(document).ready(function($) {
                 formLength--;
             }
             else {
-                $(this).delegate("input:submit", 'click', function(event) {
+                formElement.delegate("input:submit", 'click', function(event) {
                     if(document.xrowCaptchaSuccess) {
                         $('.log2').hide();
                         $('.log1').show();
@@ -117,7 +115,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('#code').live('click',function(e) {
+    $('#code').live('click',function(event) {
         var hash = $(this).data( 'hash' );
         $.ez('xrowcaptcha::reloadChallange', {'hash' : hash}, function(result) {
             $('.ca_challange').html(result.content);
@@ -127,11 +125,11 @@ jQuery(document).ready(function($) {
         });
     });
 
-    $('#solution').live('blur',function(e) {
+    $('#solution').live('blur',function(event) {
         var inputresult = parseInt($("#solution").attr("value"));
         var hash_cap = $("input[name='xrowCaptchaHash']").attr("value");
-        $.ez('xrowcaptcha::compareResult', { 'inputresult':inputresult, 'hash_cap':hash_cap }, function(e) {
-            select = e.content;
+        $.ez('xrowcaptcha::compareResult', {'inputresult':inputresult, 'hash_cap':hash_cap}, function(result) {
+            select = result.content;
             if(select) {
                 document.xrowCaptchaSuccess = true;
                 $('.log2').hide();
