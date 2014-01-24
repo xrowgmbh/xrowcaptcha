@@ -30,6 +30,7 @@ class xrowCaptchaJscoreFunctions extends ezjscServerFunctions
 
     public static function loadCaptcha()
     {
+    die(var_dump(xrowCaptcha::isTrusted()));
         if ( xrowCaptcha::isTrusted() )
         {
             return '';
@@ -46,7 +47,7 @@ class xrowCaptchaJscoreFunctions extends ezjscServerFunctions
 
             $tpl = eZTemplate::factory();
             $tpl->setVariable( 'hash',$hash);
-            $tpl->setVariable('capt_text',$capt_text);
+            $tpl->setVariable( 'capt_text', $capt_text );
             return $tpl->fetch( 'design:captcha.tpl' );
         }
     }
