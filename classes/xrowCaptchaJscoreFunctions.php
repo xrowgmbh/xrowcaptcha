@@ -30,7 +30,6 @@ class xrowCaptchaJscoreFunctions extends ezjscServerFunctions
 
     public static function loadCaptcha()
     {
-    die(var_dump(xrowCaptcha::isTrusted()));
         if ( xrowCaptcha::isTrusted() )
         {
             return '';
