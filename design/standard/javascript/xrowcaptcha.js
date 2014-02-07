@@ -38,6 +38,14 @@ jQuery(document).ready(function($) {
                     }
                 }
             }
+            else
+            {
+                /* SHOW NO GENERAL PAGE CAPTCHA WHEN THERE ARE NO EX- OR INCLUDES AT ALL
+                   COULD BE IMPROVED BECAUSE NOW ITS NOT POSSIBLE TO SHOW CAPTCHA EVERYWHERE
+                   ANOTHER SETTING OPTION COULD SOLVE THE PROBLEM
+                */
+                showCaptcha = false;
+            }
         }
 
         if((showCaptcha == true && actionURL !== '' ) || $('.xrow-captcha', formElement).length > 0 ) { 
