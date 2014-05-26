@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $('#code').live('click',function(event) {
+    $('.xrow-captcha').on('click','#code',function(event) {
         var hash = $(this).data( 'hash' );
         $.ez('xrowcaptcha::reloadChallange', {'hash' : hash}, function(result) {
             $('.ca_challange').html(result.content);
@@ -133,7 +133,7 @@ jQuery(document).ready(function($) {
         });
     });
 
-    $('#solution').live('blur',function(event) {
+    $('.xrow-captcha').on('blur', '#solution',function(event) {
         var inputresult = parseInt($("#solution").attr("value"));
         var hash_cap = $("input[name='xrowCaptchaHash']").attr("value");
         $.ez('xrowcaptcha::compareResult', {'inputresult':inputresult, 'hash_cap':hash_cap}, function(result) {
