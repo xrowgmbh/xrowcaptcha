@@ -1,5 +1,5 @@
 {
-    "name": "xrowgmbh/xrowcaptcha-ls",
+    "name": "xrow/xrowcaptcha-ls",
     "description": "Accessible logical captcha technolgy that can protect all your forms automaticly without the need of modifing code.",
     "type": "ezpublish-legacy-extension",
     "license": "GPL-2.0",
